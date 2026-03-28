@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BMW Mobile Diagnostics & Repair - Mobile Service| Western Washington</title>
+    <title>BMW Mobile Diagnostics & Repair | Western Washington</title>
     
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
@@ -11,26 +11,17 @@
     <style>
         :root {
             --primary-blue: #1a365d;
-            --secondary-blue: #2a4365;
             --accent-orange: #ff8c31;
             --text-light: #ffffff;
             --bg-gray: #f4f7f9;
         }
 
-        body {
-            font-family: 'Inter', sans-serif;
-            margin: 0;
-            padding: 0;
-            color: #333;
-            line-height: 1.6;
-            background-color: var(--bg-gray);
-        }
+        body { font-family: 'Inter', sans-serif; margin: 0; padding: 0; color: #333; line-height: 1.6; background-color: var(--bg-gray); }
 
-        /* Hero Section - Image Placeholder 1 */
         .hero {
             background: linear-gradient(rgba(26, 54, 93, 0.85), rgba(26, 54, 93, 0.85)), 
-                        url('background.png') center/cover;
-            min-height: 500px;
+                        url('header-background.jpg') center/cover;
+            min-height: 450px;
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -40,129 +31,68 @@
             padding: 40px 20px;
         }
 
-        .hero h1 { font-size: clamp(2rem, 5vw, 3rem); margin-bottom: 10px; text-transform: uppercase; letter-spacing: 1px; }
-        .hero p { font-size: 1.2rem; margin-bottom: 35px; opacity: 0.9; }
+        .hero h1 { font-size: clamp(1.8rem, 5vw, 2.8rem); margin-bottom: 10px; text-transform: uppercase; }
+        .btn-cta { background-color: var(--accent-orange); color: white; padding: 18px 35px; border-radius: 8px; text-decoration: none; font-weight: 800; font-size: 1.2rem; display: inline-block; transition: 0.3s; }
+        .btn-cta:hover { transform: scale(1.03); background-color: #ff9d52; }
 
-        .btn-cta {
-            background-color: var(--accent-orange);
-            color: white;
-            padding: 18px 35px;
-            border-radius: 8px;
-            text-decoration: none;
-            font-weight: 800;
-            font-size: 1.3rem;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
-            transition: all 0.2s ease-in-out;
-            display: inline-block;
-        }
+        .section-container { max-width: 1100px; margin: -50px auto 60px; padding: 0 20px; }
 
-        .btn-cta:hover { 
-            transform: translateY(-3px);
-            box-shadow: 0 6px 20px rgba(0,0,0,0.4);
-            background-color: #ff9d52;
-        }
-
-        /* Services Grid */
-        .section-container {
-            max-width: 1100px;
-            margin: -60px auto 60px;
-            padding: 0 20px;
-        }
-
-        .services-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-            gap: 20px;
-        }
+        /* Service Cards with Background Images */
+        .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 20px; }
 
         .service-card {
-            background: var(--primary-blue);
-            color: white;
-            padding: 40px 25px;
-            border-radius: 12px;
-            text-align: center;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-        }
-
-        .service-card i { font-size: 2.8rem; margin-bottom: 20px; color: var(--accent-orange); }
-        .service-card h3 { margin: 10px 0; font-size: 1.25rem; border-bottom: 2px solid rgba(255,255,255,0.1); padding-bottom: 15px; margin-bottom: 15px; }
-        .service-card p { font-size: 0.95rem; opacity: 0.85; margin: 0; }
-
-        /* Detail Section */
-        .details-section {
-            padding: 60px 20px;
-            max-width: 1100px;
-            margin: 0 auto;
-        }
-
-        .details-grid {
-            display: grid;
-            grid-template-columns: 1.5fr 1fr;
-            gap: 40px;
-            align-items: start;
-        }
-
-        .info-content h2 { color: var(--primary-blue); font-size: 2rem; }
-        .info-content ul { list-style: none; padding: 0; }
-        .info-content li { margin-bottom: 15px; font-size: 1.1rem; display: flex; align-items: center; }
-        .info-content li i { color: var(--accent-orange); margin-right: 15px; font-size: 1.2rem; }
-
-        /* Gallery Grid */
-        .image-gallery {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 15px;
-            margin-bottom: 30px;
-        }
-
-        .gallery-item {
             position: relative;
-            height: 200px;
-            border-radius: 8px;
-            overflow: hidden;
-            background: #222;
-        }
-
-        .gallery-item img { width: 100%; height: 100%; object-fit: cover; }
-
-        .label-bar {
-            position: absolute;
-            bottom: 0;
-            width: 100%;
-            background: rgba(26, 54, 93, 0.9);
-            color: white;
-            padding: 8px 0;
-            text-align: center;
-            font-size: 0.9rem;
-            font-weight: bold;
-        }
-
-        .sidebar-box {
-            background: white;
-            padding: 30px;
+            height: 280px;
             border-radius: 12px;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.05);
-            border-top: 5px solid var(--primary-blue);
-        }
-
-        .sidebar-box h3 { margin-top: 0; color: var(--primary-blue); }
-
-        /* Footer */
-        footer {
-            background: var(--primary-blue);
-            color: white;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
             text-align: center;
-            padding: 80px 20px;
-            margin-top: 60px;
+            color: white;
+            padding: 20px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+            background-color: var(--primary-blue); /* Fallback color */
         }
 
-        footer h2 { font-size: 2.2rem; margin-bottom: 30px; }
-
-        @media (max-width: 768px) {
-            .details-grid { grid-template-columns: 1fr; }
-            .hero { min-height: 400px; }
-            .section-container { margin-top: 20px; }
+        /* The Image Layer */
+        .service-bg {
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background-size: cover;
+            background-position: center;
+            z-index: 1;
+            transition: transform 0.5s;
         }
+
+        /* The Dark Overlay to make text readable */
+        .service-overlay {
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: linear-gradient(to bottom, rgba(26, 54, 93, 0.7), rgba(26, 54, 93, 0.9));
+            z-index: 2;
+        }
+
+        .service-content { position: relative; z-index: 3; }
+        .service-card:hover .service-bg { transform: scale(1.1); }
+
+        .service-card i { font-size: 2.5rem; margin-bottom: 15px; color: var(--accent-orange); }
+        .service-card h3 { margin: 10px 0; font-size: 1.2rem; text-transform: uppercase; letter-spacing: 1px; }
+        .service-card p { font-size: 0.9rem; opacity: 0.9; margin: 0; }
+
+        /* General Content Layout */
+        .details-section { padding: 40px 20px; max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: 1.5fr 1fr; gap: 40px; }
+        .info-content h2 { color: var(--primary-blue); }
+        .info-content ul { list-style: none; padding: 0; }
+        .info-content li { margin-bottom: 12px; display: flex; align-items: center; }
+        .info-content li i { color: var(--accent-orange); margin-right: 12px; }
+
+        .sidebar-box { background: white; padding: 25px; border-radius: 12px; box-shadow: 0 5px 15px rgba(0,0,0,0.05); border-top: 5px solid var(--primary-blue); }
+
+        footer { background: var(--primary-blue); color: white; text-align: center; padding: 60px 20px; }
+
+        @media (max-width: 768px) { .details-section { grid-template-columns: 1fr; } .section-container { margin-top: 20px; } }
     </style>
 </head>
 <body>
@@ -170,83 +100,79 @@
     <header class="hero">
         <h1>BMW Diagnostics & Repair</h1>
         <p><i class="fas fa-location-dot"></i> Mobile Service | Western Washington Area</p>
-        <a href="tel:2538612955" class="btn-cta">
-            <i class="fas fa-phone-alt"></i> CALL OR TEXT: (253) 861-2955
-        </a>
+        <a href="tel:2538612955" class="btn-cta">CALL OR TEXT: (253) 861-2955</a>
     </header>
 
     <div class="section-container">
         <div class="services-grid">
+            
             <div class="service-card">
-                <i class="fas fa-key"></i>
-                <h3>Key Programming</h3>
-                <p>Lost keys or new spares. Specialized programming for BMW E and F series models.</p>
+                <div class="service-bg" style="background-image: url('service-key.jpg');"></div>
+                <div class="service-overlay"></div>
+                <div class="service-content">
+                    <i class="fas fa-key"></i>
+                    <h3>Key Programming</h3>
+                    <p>Lost keys or new spares. Specialized programming for BMW E and F series.</p>
+                </div>
             </div>
+
             <div class="service-card">
-                <i class="fas fa-microchip"></i>
-                <h3>ECU & Coding</h3>
-                <p>Module cloning, coding, and software adaptations. ECU recovery and sync services.</p>
+                <div class="service-bg" style="background-image: url('service-ecu.jpg');"></div>
+                <div class="service-overlay"></div>
+                <div class="service-content">
+                    <i class="fas fa-microchip"></i>
+                    <h3>ECU & Coding</h3>
+                    <p>Module cloning, coding, and software adaptations for all modules.</p>
+                </div>
             </div>
+
             <div class="service-card">
-                <i class="fas fa-laptop-code"></i>
-                <h3>Advanced Diagnostics</h3>
-                <p>Dealer-level scanning and fault finding. Detailed troubleshooting for complex issues.</p>
+                <div class="service-bg" style="background-image: url('service-diag.jpg');"></div>
+                <div class="service-overlay"></div>
+                <div class="service-content">
+                    <i class="fas fa-laptop-code"></i>
+                    <h3>Advanced Diagnostics</h3>
+                    <p>Dealer-level scanning and complex fault troubleshooting.</p>
+                </div>
             </div>
+
             <div class="service-card">
-                <i class="fas fa-gears"></i>
-                <h3>Mechanical Repair</h3>
-                <p>From valve covers to cooling systems. Expert repair by an automotive technician.</p>
+                <div class="service-bg" style="background-image: url('service-mech.jpg');"></div>
+                <div class="service-overlay"></div>
+                <div class="service-content">
+                    <i class="fas fa-gears"></i>
+                    <h3>Mechanical Repair</h3>
+                    <p>Engine repairs, gaskets, and specialized S85 V10 maintenance.</p>
+                </div>
             </div>
+
         </div>
     </div>
 
     <section class="details-section">
-        <div class="details-grid">
-            <div class="info-content">
-                <h2>Our Recent Work</h2>
-                
-                <div class="image-gallery">
-                    <div class="gallery-item">
-                        <img src="1.jpg" alt="Engine Work">
-                        <div class="label-bar">Engine Work</div>
-                    </div>
-                    <div class="gallery-item">
-                        <img src="repair-2.jpg" alt="Diagnostics">
-                        <div class="label-bar">Diagnostics</div>
-                    </div>
-                    <div class="gallery-item" style="grid-column: span 2;">
-                        <img src="repair-3.jpg" alt="ECU Programming">
-                        <div class="label-bar">ECU Programming</div>
-                    </div>
-                </div>
+        <div class="info-content">
+            <h2>Expert BMW Care at Your Door</h2>
+            <p>Skip the dealership. We provide high-end diagnostics and repair using dealer-level tools throughout Western Washington.</p>
+            <ul>
+                <li><i class="fas fa-check-circle"></i> S85 V10 & N-Series Platform Specialists</li>
+                <li><i class="fas fa-check-circle"></i> Battery Registration & CAS/DME Sync</li>
+                <li><i class="fas fa-check-circle"></i> High-Pressure Vanos Testing & Repair</li>
+                <li><i class="fas fa-check-circle"></i> Mobile Service — Home or Office</li>
+            </ul>
+        </div>
 
-                <h2>Why Choose Our Mobile Service?</h2>
-                <p>Get professional-grade BMW maintenance without the dealership hassle. We come to your home or office in Western Washington.</p>
-                <ul>
-                    <li><i class="fas fa-check-circle"></i> BMW Specialist - S85 V10 & N-Series Expertise</li>
-                    <li><i class="fas fa-check-circle"></i> Battery Registration & CBS Resets</li>
-                    <li><i class="fas fa-check-circle"></i> CAS/DME Sync & Module Programming</li>
-                    <li><i class="fas fa-check-circle"></i> Fully Mobile – We come to you!</li>
-                </ul>
-            </div>
-
-            <div class="sidebar-box">
-                <h3>Contact Info</h3>
-                <p><strong>Phone:</strong> (253) 861-2955</p>
-                <p><strong>Service Area:</strong> Western Washington</p>
-                <p><strong>Availability:</strong> Call or text for same-day diagnostics.</p>
-                <hr style="opacity: 0.1; margin: 20px 0;">
-                <p style="font-size: 0.9rem; color: #666;">Expert repair for M5, M6, 3-Series, 5-Series, and more.</p>
-            </div>
+        <div class="sidebar-box">
+            <h3>Contact Info</h3>
+            <p><strong>Phone:</strong> (253) 861-2955</p>
+            <p><strong>Service Area:</strong> Western Washington</p>
+            <p><strong>Availability:</strong> Same-day diagnostics available.</p>
         </div>
     </section>
 
     <footer>
-        <h2>Ready to get your BMW back on the road?</h2>
-        <a href="tel:2538612955" class="btn-cta">
-            <i class="fas fa-phone-alt"></i> CALL NOW: (253) 861-2955
-        </a>
-        <p style="margin-top: 40px; font-size: 0.8rem; opacity: 0.6;">© 2026 Mobile BMW Repair & Diagnostics</p>
+        <h2>Get Your BMW Fixed Today</h2>
+        <a href="tel:2538612955" class="btn-cta">CALL NOW</a>
+        <p style="margin-top: 30px; font-size: 0.8rem; opacity: 0.6;">© 2026 Mobile BMW Repair & Diagnostics</p>
     </footer>
 
 </body>
