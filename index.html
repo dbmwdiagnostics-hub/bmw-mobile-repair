@@ -10,12 +10,12 @@
     
     <style>
         :root {
-            --primary-navy: #1a365d;
+            --bmw-blue: #0066ad;
+            --primary-navy: #1e293b;
             --accent-orange: #ff8c31;
-            --bg-light: #f8fafc;
-            --card-white: #ffffff;
-            --glass-white: rgba(255, 255, 255, 0.7);
-            --border-soft: rgba(0, 0, 0, 0.05);
+            --bg-light: #fdfdfd;
+            --card-glass: rgba(255, 255, 255, 0.8);
+            --border-soft: rgba(0, 0, 0, 0.08);
         }
 
         html { scroll-behavior: smooth; }
@@ -29,9 +29,9 @@
             overflow-x: hidden;
         }
 
-        /* HERO SECTION - Light Overlay */
+        /* HERO SECTION */
         .hero {
-            background: linear-gradient(rgba(248, 250, 252, 0.8), rgba(248, 250, 252, 0.9)), 
+            background: linear-gradient(rgba(255, 255, 255, 0.7), rgba(255, 255, 255, 0.85)), 
                         url('background.png') center/cover;
             min-height: 400px;
             display: flex;
@@ -45,7 +45,7 @@
 
         .mobile-tag { 
             font-size: 0.8rem; letter-spacing: 5px; text-transform: uppercase; 
-            font-weight: 600; margin-bottom: 10px; color: var(--accent-orange);
+            font-weight: 600; margin-bottom: 10px; color: var(--bmw-blue);
         }
 
         .hero h1 { 
@@ -54,102 +54,98 @@
             letter-spacing: -1px;
         }
 
-        .hero p { color: #64748b; font-weight: 400; letter-spacing: 0.5px; margin-top: 10px; }
-
         .btn-cta { 
             background: linear-gradient(135deg, var(--accent-orange), #ff6b00); 
             color: white; padding: 18px 40px; border-radius: 12px; 
             text-decoration: none; font-weight: 800; font-size: 1.1rem; 
-            display: inline-block; transition: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); 
+            display: inline-block; transition: 0.4s; 
             border: none; margin-top: 30px; 
-            box-shadow: 0 10px 25px rgba(255, 140, 49, 0.3); 
+            box-shadow: 0 10px 25px rgba(255, 140, 49, 0.2); 
         }
-        .btn-cta:hover { transform: translateY(-3px); box-shadow: 0 15px 35px rgba(255, 140, 49, 0.4); }
 
         /* SECTION HEADERS */
         .section-header { text-align: center; margin: 80px auto 40px; }
         .section-header h2 { font-size: 2.2rem; font-weight: 800; text-transform: uppercase; color: var(--primary-navy); }
-        .section-header .underline { width: 50px; height: 4px; background: var(--accent-orange); margin: 12px auto; border-radius: 10px; }
+        .section-header .underline { width: 40px; height: 4px; background: var(--bmw-blue); margin: 12px auto; border-radius: 10px; }
 
-        /* SERVICES GRID */
+        /* UPDATED: LIGHT SERVICE CARDS */
         .section-container { max-width: 1100px; margin: 0 auto 80px; padding: 0 20px; }
-        .services-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 15px; perspective: 1000px; }
+        .services-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
         
         .service-card {
-            position: relative; height: 200px; border-radius: 20px; overflow: hidden; 
+            position: relative; height: 220px; border-radius: 24px; overflow: hidden; 
             display: flex; flex-direction: column; align-items: center; justify-content: center; 
-            text-align: center; color: white; padding: 20px;
-            background: var(--primary-navy); cursor: pointer;
-            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            text-align: center; padding: 25px;
+            background: var(--card-glass); 
+            border: 1px solid var(--border-soft);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.03);
+            cursor: pointer;
+            transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
         }
 
+        /* Icon styling in the card */
+        .service-card i.main-icon {
+            font-size: 2.5rem; color: var(--bmw-blue); margin-bottom: 15px; transition: 0.4s;
+        }
+
+        .service-card h3 { 
+            margin: 0; font-size: 1rem; text-transform: uppercase; 
+            font-weight: 800; color: var(--primary-navy); z-index: 3; 
+        }
+
+        /* Card active/hover state */
         .service-card.active { 
-            height: 360px; transform: scale(1.12); z-index: 50; 
-            box-shadow: 0 30px 60px rgba(26, 54, 93, 0.25); 
+            height: 380px; transform: translateY(-10px) scale(1.05); z-index: 50; 
+            background: #fff; border-color: var(--bmw-blue);
+            box-shadow: 0 40px 70px rgba(0, 102, 173, 0.15); 
         }
-
-        .services-grid:has(.service-card.active) .service-card:not(.active) { filter: grayscale(0.5); opacity: 0.4; transform: scale(0.95); }
-
-        .service-bg { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background-size: cover; background-position: center; z-index: 1; transition: 1s; opacity: 0.5; }
-        .service-overlay { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(to bottom, rgba(26, 54, 93, 0.4), rgba(26, 54, 93, 0.9)); z-index: 2; }
         
-        .service-card h3 { margin: 0; font-size: 0.9rem; text-transform: uppercase; font-weight: 800; z-index: 3; letter-spacing: 1px; }
-        .service-desc { max-height: 0; opacity: 0; overflow: hidden; transition: 0.4s; font-size: 0.85rem; z-index: 3; color: #cbd5e1; line-height: 1.4; }
-        .service-card.active .service-desc { max-height: 200px; opacity: 1; margin-top: 15px; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 15px; }
+        .service-card.active i.main-icon { color: var(--accent-orange); transform: scale(1.1); }
 
-        /* LIGHT GLASS FORM */
-        .form-section { 
-            background: var(--card-white); 
-            padding: 50px; border-radius: 24px; 
-            max-width: 800px; margin: 0 auto 100px; 
-            border: 1px solid #e2e8f0; 
-            box-shadow: 0 20px 40px rgba(0,0,0,0.03);
+        .service-desc { 
+            max-height: 0; opacity: 0; overflow: hidden; transition: 0.4s; 
+            font-size: 0.9rem; color: #64748b; line-height: 1.5;
         }
-        .form-section h2 { margin-bottom: 30px; font-weight: 800; text-align: center; color: var(--primary-navy); }
+        .service-card.active .service-desc { max-height: 200px; opacity: 1; margin-top: 20px; padding-top: 15px; border-top: 1px solid #f1f5f9; }
+
+        /* FORM & AREA SECTIONS (CLEAN LIGHT) */
+        .form-section, .details-section { 
+            background: #fff; padding: 50px; border-radius: 30px; 
+            border: 1px solid var(--border-soft); box-shadow: 0 15px 45px rgba(0,0,0,0.02);
+            margin-bottom: 80px;
+        }
+        
+        .details-section { display: grid; grid-template-columns: 1fr 1.2fr; gap: 50px; align-items: center; }
+        .map-container { border-radius: 20px; overflow: hidden; border: 1px solid #eee; }
+
         .contact-form input, .contact-form textarea { 
-            background: #f1f5f9; 
-            border: 1px solid #e2e8f0; 
-            color: #1e293b; padding: 15px; border-radius: 10px; margin-bottom: 15px; width: 100%; box-sizing: border-box; font-family: inherit;
+            background: #f8fafc; border: 1px solid #e2e8f0; width: 100%; padding: 16px; 
+            border-radius: 12px; margin-bottom: 15px; box-sizing: border-box; font-family: inherit;
         }
-        .contact-form input:focus { border-color: var(--accent-orange); outline: none; background: #fff; }
 
-        /* SERVICE AREA - LIGHT CLEAN CARD */
-        .details-section { 
-            background: var(--card-white); padding: 60px; border-radius: 24px; 
-            display: grid; grid-template-columns: 1fr 1.2fr; gap: 50px; align-items: center;
-            margin-bottom: 80px; border: 1px solid #e2e8f0;
-        }
-        .map-container { border-radius: 16px; overflow: hidden; box-shadow: 0 10px 20px rgba(0,0,0,0.05); }
-
-        /* BOTTOM CONTACT TILES - LIGHT */
+        /* BOTTOM INFO TILES */
         .bottom-info-box { 
-            background: var(--card-white); 
-            padding: 30px; border-radius: 20px; 
-            border: 1px solid #e2e8f0; 
-            display: flex; justify-content: space-around; flex-wrap: wrap; gap: 20px; 
-            box-shadow: 0 10px 25px rgba(0,0,0,0.02);
+            background: #fff; padding: 35px; border-radius: 24px; border: 1px solid var(--border-soft);
+            display: flex; justify-content: space-around; flex-wrap: wrap; gap: 20px;
         }
-        .info-tile { display: flex; align-items: center; gap: 12px; }
-        .info-tile i { color: var(--accent-orange); font-size: 1.3rem; }
-        .info-tile strong { color: var(--primary-navy); display: block; font-size: 0.9rem; }
-        .info-tile span { font-size: 0.85rem; color: #64748b; }
+        .info-tile { display: flex; align-items: center; gap: 15px; }
+        .info-tile i { color: var(--bmw-blue); font-size: 1.4rem; }
+        .info-tile strong { color: var(--primary-navy); font-size: 0.95rem; display: block; }
+        .info-tile span { color: #64748b; font-size: 0.85rem; }
 
-        footer { background: #f1f5f9; color: var(--primary-navy); text-align: center; padding: 60px 20px; border-top: 1px solid #e2e8f0; }
+        footer { background: #fdfdfd; padding: 60px 20px; text-align: center; border-top: 1px solid #eee; }
 
         @media (max-width: 768px) {
-            .services-grid { grid-template-columns: repeat(2, 1fr); }
-            .service-card { height: 150px; }
+            .services-grid { grid-template-columns: repeat(2, 1fr); gap: 15px; }
+            .service-card { height: 180px; }
             .details-section { grid-template-columns: 1fr; padding: 30px 20px; }
-            .form-section { padding: 30px 20px; margin: 0 15px 80px; }
-            .bottom-info-box { flex-direction: column; text-align: left; }
         }
     </style>
 </head>
 <body>
 
     <header class="hero">
-        <div class="mobile-tag">Mobile Excellence</div>
+        <div class="mobile-tag">Mobile Precision</div>
         <h1>BMW Diagnostics <br>& Repair</h1>
         <p><i class="fas fa-location-dot"></i> Western Washington's Premier Mobile Specialist</p>
         <a href="tel:2538612955" class="btn-cta">CALL OR TEXT (253) 861-2955</a>
@@ -163,29 +159,25 @@
     <div class="section-container">
         <div class="services-grid">
             <div class="service-card" onclick="toggleCard(this)">
-                <div class="service-bg" style="background-image: url('key.png');"></div>
-                <div class="service-overlay"></div>
+                <i class="fas fa-key main-icon"></i>
                 <h3>Key Systems</h3>
                 <div class="service-desc">Lost key recovery, spare cloning, and complex E/F series remote synchronization.</div>
             </div>
 
             <div class="service-card" onclick="toggleCard(this)">
-                <div class="service-bg" style="background-image: url('ecu.png');"></div>
-                <div class="service-overlay"></div>
+                <i class="fas fa-microchip main-icon"></i>
                 <h3>Digital Modules</h3>
-                <div class="service-desc">ECU cloning, coding, and software adaptations. Recovery of bricked modules.</div>
+                <div class="service-desc">ECU cloning, coding, and software adaptations. Recovery of bricked or used modules.</div>
             </div>
 
             <div class="service-card" onclick="toggleCard(this)">
-                <div class="service-bg" style="background-image: url('diag.png');"></div>
-                <div class="service-overlay"></div>
+                <i class="fas fa-laptop-code main-icon"></i>
                 <h3>Diagnostics</h3>
                 <div class="service-desc">Dealer-level fault analysis, electrical troubleshooting, and deep-system scanning.</div>
             </div>
 
             <div class="service-card" onclick="toggleCard(this)">
-                <div class="service-bg" style="background-image: url('mech.png');"></div>
-                <div class="service-overlay"></div>
+                <i class="fas fa-tools main-icon"></i>
                 <h3>Mechanical</h3>
                 <div class="service-desc">S85 V10 specialization. Belt drives, gaskets, and performance maintenance.</div>
             </div>
@@ -196,11 +188,11 @@
         <div class="details-section">
             <div class="info-content">
                 <h2 style="font-size: 2.2rem; margin-top: 0; color: var(--primary-navy);">Service Area</h2>
-                <p>Skip the dealership. We bring high-end diagnostic tools and professional repair services directly to your doorstep across Western Washington.</p>
+                <p>We bring dealership-level technical support directly to your home or workplace. Serving the Puget Sound region with precision and convenience.</p>
                 <ul style="list-style: none; padding: 0; margin-top: 25px; color: #475569;">
-                    <li style="margin-bottom: 8px;"><i class="fas fa-check" style="color:var(--accent-orange); margin-right: 10px;"></i> On-Site Key Programming</li>
-                    <li style="margin-bottom: 8px;"><i class="fas fa-check" style="color:var(--accent-orange); margin-right: 10px;"></i> Advanced Module Coding</li>
-                    <li style="margin-bottom: 8px;"><i class="fas fa-check" style="color:var(--accent-orange); margin-right: 10px;"></i> S85 Vanos Diagnostics</li>
+                    <li style="margin-bottom: 10px;"><i class="fas fa-check" style="color:var(--bmw-blue); margin-right: 10px;"></i> On-Site Key Programming</li>
+                    <li style="margin-bottom: 10px;"><i class="fas fa-check" style="color:var(--bmw-blue); margin-right: 10px;"></i> Performance Engine Tuning</li>
+                    <li style="margin-bottom: 10px;"><i class="fas fa-check" style="color:var(--bmw-blue); margin-right: 10px;"></i> Full Module Retrofitting</li>
                 </ul>
             </div>
             <div class="map-container">
@@ -211,7 +203,7 @@
 
     <section class="section-container" id="request-form">
         <div class="form-section">
-            <h2>Direct Inquiry</h2>
+            <h2 style="text-align: center; color: var(--primary-navy);">Direct Inquiry</h2>
             <form action="https://formsubmit.co/dbmwdiagnostics@gmail.com" method="POST" class="contact-form">
                 <input type="text" name="_honey" style="display:none">
                 <input type="hidden" name="_captcha" value="false">
@@ -233,18 +225,18 @@
                 <div><strong>Call or Text</strong><span>(253) 861-2955</span></div>
             </div>
             <div class="info-tile">
-                <i class="fas fa-car"></i>
+                <i class="fas fa-car-side"></i>
                 <div><strong>Mobile Service</strong><span>Western Washington</span></div>
             </div>
             <div class="info-tile">
-                <i class="fas fa-map-marker-alt"></i>
+                <i class="fas fa-shield-alt"></i>
                 <div><strong>Coverage</strong><span>Pierce, King, Thurston</span></div>
             </div>
         </div>
     </div>
 
     <footer>
-        <h2 style="font-weight: 800; letter-spacing: -1px; text-transform: uppercase;">BMW Mobile Repair</h2>
+        <h2 style="font-weight: 800; letter-spacing: -1px; text-transform: uppercase; color: var(--primary-navy);">BMW Mobile Repair</h2>
         <p style="opacity: 0.6; font-size: 0.8rem; margin-top: 15px;">© 2026 Mobile BMW Repair & Diagnostics. Professional Automotive Solutions.</p>
     </footer>
 
