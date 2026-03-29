@@ -36,34 +36,28 @@
         .hero h1 { font-size: clamp(1.8rem, 5vw, 2.8rem); margin: 0 0 10px 0; text-transform: uppercase; font-weight: 800; }
         .hero h1 span.small-title { font-size: 0.6em; text-transform: none; vertical-align: middle; opacity: 0.9; margin-left: 10px; display: inline-block; }
 
-        .btn-cta { background-color: var(--accent-orange); color: white; padding: 14px 32px; border-radius: 8px; text-decoration: none; font-weight: 800; font-size: 1.1rem; display: inline-block; transition: 0.3s; cursor: pointer; border: none; margin-top: 20px; box-shadow: 0 4px 15px rgba(255, 140, 49, 0.3); }
+        /* UPDATED BUTTON STYLE */
+        .btn-cta { 
+            background-color: var(--accent-orange); 
+            color: white; 
+            padding: 14px 32px; 
+            border-radius: 8px; 
+            text-decoration: none; 
+            font-weight: 800; 
+            font-size: 1.2rem; 
+            display: inline-block; 
+            transition: 0.3s; 
+            cursor: pointer; 
+            border: none; 
+            margin-top: 20px; 
+            box-shadow: 0 4px 15px rgba(255, 140, 49, 0.3); 
+        }
         .btn-cta:hover { transform: translateY(-2px); background-color: #ff9d52; box-shadow: 0 6px 20px rgba(255, 140, 49, 0.4); }
 
-        /* NEW: SECTION HEADER */
-        .section-header {
-            text-align: center;
-            margin: 60px auto 40px;
-            position: relative;
-            animation: fadeInUp 1s ease-out;
-        }
-
-        .section-header h2 {
-            font-size: 2.2rem;
-            color: var(--primary-blue);
-            text-transform: uppercase;
-            font-weight: 800;
-            margin: 0;
-            letter-spacing: 1px;
-        }
-
-        .section-header .underline {
-            width: 60px;
-            height: 4px;
-            background: var(--accent-orange);
-            margin: 12px auto 0;
-            border-radius: 2px;
-            transition: width 0.5s ease;
-        }
+        /* SECTION HEADER */
+        .section-header { text-align: center; margin: 60px auto 40px; position: relative; animation: fadeInUp 1s ease-out; }
+        .section-header h2 { font-size: 2.2rem; color: var(--primary-blue); text-transform: uppercase; font-weight: 800; margin: 0; letter-spacing: 1px; }
+        .section-header .underline { width: 60px; height: 4px; background: var(--accent-orange); margin: 12px auto 0; border-radius: 2px; }
 
         /* SERVICES GRID */
         .section-container { max-width: 1100px; margin: 0 auto 80px; padding: 0 20px; animation: fadeInUp 1.2s ease-out; }
@@ -115,7 +109,8 @@
         }
 
         @media (max-width: 768px) {
-            .section-header h2 { font-size: 1.8rem; }
+            .hero h1 { font-size: 1.8rem; }
+            .btn-cta { font-size: 1rem; padding: 12px 20px; }
             .services-grid { grid-template-columns: repeat(2, 1fr); gap: 12px; }
             .service-card { height: 140px; }
             .details-section { display: flex; flex-direction: column; }
@@ -130,8 +125,8 @@
     <header class="hero">
         <div class="mobile-tag">Mobile</div>
         <h1>BMW Diagnostics & Repair <span class="small-title">— &nbsp;Service</span></h1>
-        <p style="margin-top: 6px; opacity: 0.9; font-size: 1rem;"><i class="fas fa-location-dot"></i> Serving Western Washington</p>
-        <a href="#request-form" class="btn-cta">REQUEST A QUOTE</a>
+        <p style="margin-top: 5px; opacity: 0.9; font-size: 1rem;"><i class="fas fa-location-dot"></i> Serving Western Washington</p>
+        <a href="tel:2538612955" class="btn-cta">CALL OR TEXT (253) 861-2955</a>
     </header>
 
     <div class="section-header">
