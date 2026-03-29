@@ -159,7 +159,7 @@
 </head>
 <body>
 
-    <header class="hero">
+    <header class="hero" id="top">
         <div class="mobile-tag"> Mobile Service</div>
         <h1>BMW Diagnostics <br><span style="color:var(--accent-orange)">&</span> Repair</h1>
         <p><i class="fas fa-location-dot"></i> Western Washington's Premier Mobile Specialist</p>
@@ -227,9 +227,9 @@
                 <input type="text" name="_honey" style="display:none">
                 <input type="hidden" name="_captcha" value="false">
                 
-                <input type="text" name="name" placeholder="Client Name" required>
-                <input type="text" name="phone" placeholder="Phone Number" required>
-                <input type="text" name="car-info" placeholder="Model & Year (e.g., 2010 M5)" required>
+                <input type="text" name="name" placeholder="Client Name" required autocomplete="off">
+                <input type="text" name="phone" placeholder="Phone Number" required autocomplete="off">
+                <input type="text" name="car-info" placeholder="Model & Year (e.g., 2010 M5)" required autocomplete="off">
                 <textarea name="message" placeholder="Service requirements..." required></textarea>
                 
                 <button type="submit" class="btn-cta" style="margin-top: 10px;">Send Secure Request</button>
@@ -260,12 +260,25 @@
     </footer>
 
     <script>
+        // Force the page to stay at the top on load/refresh
+        if ('scrollRestoration' in history) {
+            history.scrollRestoration = 'manual';
+        }
+        window.scrollTo(0, 0);
+
         function toggleCard(card) {
             document.querySelectorAll('.service-card').forEach(c => {
                 if (c !== card) c.classList.remove('active');
             });
             card.classList.toggle('active');
         }
+
+        // Additional safety: scroll to top after everything has loaded
+        window.addEventListener('load', function() {
+            setTimeout(function() {
+                window.scrollTo(0, 0);
+            }, 10);
+        });
     </script>
 
 </body>
