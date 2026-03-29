@@ -40,93 +40,59 @@
 
         .section-container { max-width: 1100px; margin: 50px auto; padding: 0 20px; }
 
-        /* CONTACT MIDDLE BOX */
-        .mid-contact-container { max-width: 1100px; margin: 0 auto 40px; padding: 0 20px; }
-        .sidebar-box { 
-            background: white; 
-            padding: 25px; 
-            border-radius: 12px; 
-            box-shadow: 0 5px 15px rgba(0,0,0,0.05); 
-            border-top: 5px solid var(--primary-blue); 
-            display: flex;
-            justify-content: space-around;
-            flex-wrap: wrap;
-            gap: 20px;
-            text-align: center;
-        }
-        .sidebar-box p { margin: 0; font-size: 0.95rem; }
-
         /* SERVICES GRID */
-        .services-grid { 
-            display: grid; 
-            grid-template-columns: repeat(4, 1fr); 
-            gap: 15px; 
-            position: relative;
-        }
-
+        .services-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 15px; position: relative; }
         .service-card {
-            position: relative;
-            height: 180px;
-            border-radius: 16px;
-            overflow: hidden;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            color: white;
-            padding: 20px;
-            background-color: var(--primary-blue);
-            cursor: pointer;
-            z-index: 1;
+            position: relative; height: 180px; border-radius: 16px; overflow: hidden; display: flex; flex-direction: column;
+            align-items: center; justify-content: center; text-align: center; color: white; padding: 20px;
+            background-color: var(--primary-blue); cursor: pointer; z-index: 1;
             transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.5s ease;
             box-shadow: 0 4px 10px rgba(0,0,0,0.1);
         }
-
-        .service-card.active { 
-            z-index: 100; 
-            transform: scale(1.15); 
-            box-shadow: 0 30px 60px rgba(0,0,0,0.5); 
-            height: 340px; 
-        }
-
-        .services-grid:has(.service-card.active) .service-card:not(.active) {
-            opacity: 0.4;
-            filter: grayscale(0.5);
-            transform: scale(0.95);
-        }
+        .service-card.active { z-index: 100; transform: scale(1.15); box-shadow: 0 30px 60px rgba(0,0,0,0.5); height: 340px; }
+        .services-grid:has(.service-card.active) .service-card:not(.active) { opacity: 0.4; filter: grayscale(0.5); transform: scale(0.95); }
 
         .service-bg { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background-size: cover; background-position: center; z-index: 1; transition: 0.5s; }
         .service-overlay { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(to bottom, rgba(26, 54, 93, 0.4), rgba(26, 54, 93, 0.9)); z-index: 2; }
         .service-content { position: relative; z-index: 3; pointer-events: none; width: 100%; }
         .service-card h3 { margin: 0; font-size: 0.95rem; text-transform: uppercase; font-weight: 800; text-shadow: 0 2px 4px rgba(0,0,0,0.5); }
-
         .service-desc { max-height: 0; opacity: 0; overflow: hidden; transition: 0.4s ease; font-size: 0.85rem; line-height: 1.5; padding: 0 10px; }
         .service-card.active .service-desc { max-height: 200px; opacity: 1; margin-top: 20px; padding-top: 15px; border-top: 1px solid rgba(255,255,255,0.2); }
-
         .expand-icon { position: absolute; top: 15px; right: 15px; z-index: 4; font-size: 0.9rem; opacity: 0.7; transition: 0.4s; }
         .service-card.active .expand-icon { transform: rotate(45deg); opacity: 1; }
 
-        /* SERVICE AREA SECTION */
-        .details-section { padding: 40px 20px; max-width: 1100px; margin: 0 auto 60px; display: grid; grid-template-columns: 1fr 1.2fr; gap: 40px; align-items: start; }
+        /* CONTACT FORM SECTION */
+        .form-section { background: white; padding: 60px 20px; border-radius: 20px; max-width: 800px; margin: 0 auto 60px; box-shadow: 0 10px 30px rgba(0,0,0,0.05); }
+        .form-section h2 { color: var(--primary-blue); text-align: center; margin-bottom: 30px; }
+        .contact-form { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+        .contact-form .full-width { grid-column: span 2; }
+        .contact-form input, .contact-form textarea { width: 100%; padding: 15px; border: 1px solid #ddd; border-radius: 8px; font-family: inherit; box-sizing: border-box; }
+        .contact-form textarea { height: 120px; }
+        .form-btn { background: var(--primary-blue); color: white; border: none; padding: 15px; border-radius: 8px; font-weight: 800; cursor: pointer; transition: 0.3s; text-transform: uppercase; }
+        .form-btn:hover { background: #2a4a7d; }
+
+        /* SERVICE AREA & MAP */
+        .details-section { padding: 40px 20px; max-width: 1100px; margin: 0 auto 40px; display: grid; grid-template-columns: 1fr 1.2fr; gap: 40px; align-items: start; }
         .info-content h2 { color: var(--primary-blue); margin-top: 0; }
         .map-container { width: 100%; border-radius: 12px; overflow: hidden; box-shadow: 0 5px 15px rgba(0,0,0,0.1); background: #ddd; }
         .map-container img { width: 100%; height: auto; display: block; }
 
+        /* BOTTOM CONTACT INFO */
+        .bottom-info-container { max-width: 1100px; margin: 0 auto 60px; padding: 0 20px; }
+        .bottom-info-box { background: white; padding: 30px; border-radius: 12px; box-shadow: 0 5px 15px rgba(0,0,0,0.05); border-bottom: 5px solid var(--accent-orange); display: flex; justify-content: space-around; flex-wrap: wrap; gap: 20px; text-align: center; }
+        .bottom-info-box p { margin: 0; font-size: 0.95rem; color: #555; }
+        .bottom-info-box strong { color: var(--primary-blue); }
+
         footer { background: var(--primary-blue); color: white; text-align: center; padding: 50px 20px; }
 
         @media (max-width: 768px) {
-            .hero { min-height: 240px; }
-            .sidebar-box { flex-direction: column; gap: 10px; text-align: left; padding: 20px; }
+            .contact-form { grid-template-columns: 1fr; }
+            .contact-form .full-width { grid-column: span 1; }
             .services-grid { grid-template-columns: repeat(2, 1fr); gap: 12px; }
             .service-card { height: 140px; }
             .service-card.active { height: 280px; transform: scale(1.1); }
-            .service-card h3 { font-size: 0.75rem; }
-            
-            /* Mobile Stacking for Service Area */
-            .details-section { display: flex; flex-direction: column; gap: 20px; }
-            .info-content { order: 1; }
-            .map-container { order: 2; }
+            .details-section { display: flex; flex-direction: column; }
+            .bottom-info-box { flex-direction: column; text-align: left; }
         }
     </style>
 </head>
@@ -136,7 +102,7 @@
         <div class="mobile-tag">Mobile</div>
         <h1>BMW Diagnostics & Repair <span class="small-title">— &nbsp;Service</span></h1>
         <p style="margin-top: 5px; opacity: 0.8; font-size: 0.9rem;"><i class="fas fa-location-dot"></i> Western Washington</p>
-        <a href="tel:2538612955" class="btn-cta">CALL OR TEXT</a>
+        <a href="#request-form" class="btn-cta">BOOK SERVICE</a>
     </header>
 
     <div class="section-container">
@@ -183,24 +149,40 @@
         </div>
     </div>
 
-    <div class="mid-contact-container">
-        <div class="sidebar-box">
-            <p><strong><i class="fas fa-phone"></i> Phone:</strong> (253) 861-2955</p>
-            <p><strong><i class="fas fa-car"></i> Location:</strong> Mobile Service based in Western WA</p>
-            <p><strong><i class="fas fa-map-marked-alt"></i> Coverage:</strong> Pierce, King, and Thurston Counties</p>
-        </div>
-    </div>
-
     <section class="details-section">
         <div class="info-content">
             <h2>Service Area</h2>
             <p>We provide high-end mobile diagnostics and repair throughout Western Washington. Skip the dealership—we come to your home or office.</p>
         </div>
-
         <div class="map-container">
             <img src="map.png" alt="BMW Mobile Repair Service Area Map">
         </div>
     </section>
+
+    <section class="section-container" id="request-form">
+        <div class="form-section">
+            <h2>Request Mobile Service</h2>
+            <form action="https://formsubmit.co/dbmwdiagnostics@gmail.com" method="POST" class="contact-form">
+                <input type="text" name="_honey" style="display:none">
+                <input type="hidden" name="_captcha" value="false">
+                
+                <input type="text" name="name" placeholder="Your Name" required>
+                <input type="text" name="phone" placeholder="Phone Number" required>
+                <input type="text" name="car-info" placeholder="Vehicle Model & Year (e.g., 2008 M5)" class="full-width" required>
+                <textarea name="message" placeholder="Brief description of the issue or service needed..." class="full-width" required></textarea>
+                
+                <button type="submit" class="form-btn full-width">Send Request</button>
+            </form>
+        </div>
+    </section>
+
+    <div class="bottom-info-container">
+        <div class="bottom-info-box">
+            <p><strong><i class="fas fa-phone"></i> Phone:</strong> (253) 861-2955</p>
+            <p><strong><i class="fas fa-car"></i> Service:</strong> Mobile based in Western WA</p>
+            <p><strong><i class="fas fa-map-marked-alt"></i> Coverage:</strong> Pierce, King, and Thurston Counties</p>
+        </div>
+    </div>
 
     <footer>
         <h2>Get Your BMW Fixed Today</h2>
