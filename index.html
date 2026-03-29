@@ -38,8 +38,25 @@
         .btn-cta { background-color: var(--accent-orange); color: white; padding: 14px 28px; border-radius: 8px; text-decoration: none; font-weight: 800; font-size: 1.1rem; display: inline-block; transition: 0.3s; cursor: pointer; border: none; margin-top: 15px; }
         .btn-cta:hover { transform: scale(1.03); background-color: #ff9d52; }
 
-        .section-container { max-width: 1100px; margin: 50px auto 80px; padding: 0 20px; }
+        .section-container { max-width: 1100px; margin: 50px auto; padding: 0 20px; }
 
+        /* CONTACT MIDDLE BOX */
+        .mid-contact-container { max-width: 1100px; margin: 0 auto 40px; padding: 0 20px; }
+        .sidebar-box { 
+            background: white; 
+            padding: 25px; 
+            border-radius: 12px; 
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05); 
+            border-top: 5px solid var(--primary-blue); 
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            gap: 20px;
+            text-align: center;
+        }
+        .sidebar-box p { margin: 0; font-size: 0.95rem; }
+
+        /* SERVICES GRID */
         .services-grid { 
             display: grid; 
             grid-template-columns: repeat(4, 1fr); 
@@ -62,22 +79,17 @@
             background-color: var(--primary-blue);
             cursor: pointer;
             z-index: 1;
-            /* Crucial for the "overlap" effect */
-            transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1), 
-                        box-shadow 0.5s ease, 
-                        z-index 0s;
+            transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.5s ease;
             box-shadow: 0 4px 10px rgba(0,0,0,0.1);
         }
 
-        /* OVERLAP & EXPAND LOGIC */
         .service-card.active { 
-            z-index: 100; /* Moves it above everything else on the page */
-            transform: scale(1.15); /* Makes it significantly larger to overlap neighbors */
+            z-index: 100; 
+            transform: scale(1.15); 
             box-shadow: 0 30px 60px rgba(0,0,0,0.5); 
-            height: 340px; /* Expands height while scaled */
+            height: 340px; 
         }
 
-        /* Darkens other cards when one is active to make the overlap pop */
         .services-grid:has(.service-card.active) .service-card:not(.active) {
             opacity: 0.4;
             filter: grayscale(0.5);
@@ -87,52 +99,34 @@
         .service-bg { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background-size: cover; background-position: center; z-index: 1; transition: 0.5s; }
         .service-overlay { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(to bottom, rgba(26, 54, 93, 0.4), rgba(26, 54, 93, 0.9)); z-index: 2; }
         .service-content { position: relative; z-index: 3; pointer-events: none; width: 100%; }
-        
         .service-card h3 { margin: 0; font-size: 0.95rem; text-transform: uppercase; font-weight: 800; text-shadow: 0 2px 4px rgba(0,0,0,0.5); }
 
-        .service-desc { 
-            max-height: 0; 
-            opacity: 0; 
-            overflow: hidden; 
-            transition: 0.4s ease; 
-            font-size: 0.85rem; 
-            line-height: 1.5;
-            padding: 0 10px;
-        }
-        .service-card.active .service-desc { 
-            max-height: 200px; 
-            opacity: 1; 
-            margin-top: 20px; 
-            padding-top: 15px; 
-            border-top: 1px solid rgba(255,255,255,0.2); 
-        }
+        .service-desc { max-height: 0; opacity: 0; overflow: hidden; transition: 0.4s ease; font-size: 0.85rem; line-height: 1.5; padding: 0 10px; }
+        .service-card.active .service-desc { max-height: 200px; opacity: 1; margin-top: 20px; padding-top: 15px; border-top: 1px solid rgba(255,255,255,0.2); }
 
         .expand-icon { position: absolute; top: 15px; right: 15px; z-index: 4; font-size: 0.9rem; opacity: 0.7; transition: 0.4s; }
         .service-card.active .expand-icon { transform: rotate(45deg); opacity: 1; }
 
-        /* SERVICE AREA & MAP */
-        .details-section { padding: 40px 20px; max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1.2fr; gap: 40px; align-items: start; }
+        /* SERVICE AREA SECTION */
+        .details-section { padding: 40px 20px; max-width: 1100px; margin: 0 auto 60px; display: grid; grid-template-columns: 1fr 1.2fr; gap: 40px; align-items: start; }
         .info-content h2 { color: var(--primary-blue); margin-top: 0; }
         .map-container { width: 100%; border-radius: 12px; overflow: hidden; box-shadow: 0 5px 15px rgba(0,0,0,0.1); background: #ddd; }
         .map-container img { width: 100%; height: auto; display: block; }
-        .sidebar-box { background: white; padding: 25px; border-radius: 12px; box-shadow: 0 5px 15px rgba(0,0,0,0.05); border-top: 5px solid var(--primary-blue); margin-top: 25px; }
 
-        footer { background: var(--primary-blue); color: white; text-align: center; padding: 50px 20px; margin-top: 40px; }
+        footer { background: var(--primary-blue); color: white; text-align: center; padding: 50px 20px; }
 
         @media (max-width: 768px) {
             .hero { min-height: 240px; }
+            .sidebar-box { flex-direction: column; gap: 10px; text-align: left; padding: 20px; }
+            .services-grid { grid-template-columns: repeat(2, 1fr); gap: 12px; }
+            .service-card { height: 140px; }
+            .service-card.active { height: 280px; transform: scale(1.1); }
+            .service-card h3 { font-size: 0.75rem; }
+            
+            /* Mobile Stacking for Service Area */
             .details-section { display: flex; flex-direction: column; gap: 20px; }
             .info-content { order: 1; }
             .map-container { order: 2; }
-            .sidebar-box { order: 3; margin-top: 10px; }
-
-            .services-grid { grid-template-columns: repeat(2, 1fr); gap: 12px; } /* 2x2 grid on mobile for better overlap space */
-            .service-card { height: 140px; }
-            .service-card.active { 
-                height: 280px; 
-                transform: scale(1.1); /* Overlaps other mobile cards */
-            }
-            .service-card h3 { font-size: 0.75rem; }
         }
     </style>
 </head>
@@ -140,7 +134,7 @@
 
     <header class="hero">
         <div class="mobile-tag">Mobile</div>
-        <h1>BMW Diagnostics & Repair <span class="small-title"> &nbsp;</span></h1>
+        <h1>BMW Diagnostics & Repair <span class="small-title">— &nbsp;Service</span></h1>
         <p style="margin-top: 5px; opacity: 0.8; font-size: 0.9rem;"><i class="fas fa-location-dot"></i> Western Washington</p>
         <a href="tel:2538612955" class="btn-cta">CALL OR TEXT</a>
     </header>
@@ -189,6 +183,14 @@
         </div>
     </div>
 
+    <div class="mid-contact-container">
+        <div class="sidebar-box">
+            <p><strong><i class="fas fa-phone"></i> Phone:</strong> (253) 861-2955</p>
+            <p><strong><i class="fas fa-car"></i> Location:</strong> Mobile Service based in Western WA</p>
+            <p><strong><i class="fas fa-map-marked-alt"></i> Coverage:</strong> Pierce, King, and Thurston Counties</p>
+        </div>
+    </div>
+
     <section class="details-section">
         <div class="info-content">
             <h2>Service Area</h2>
@@ -197,12 +199,6 @@
 
         <div class="map-container">
             <img src="map.png" alt="BMW Mobile Repair Service Area Map">
-        </div>
-
-        <div class="sidebar-box">
-            <p><strong>Phone:</strong> (253) 861-2955</p>
-            <p><strong>Location:</strong> Mobile Service based in Western Washington</p>
-            <p><strong>Coverage:</strong> Serving Pierce, King, and Thurston Counties.</p>
         </div>
     </section>
 
