@@ -114,16 +114,15 @@
             .hero { min-height: 220px; }
             .hero h1 span.small-title { display: block; margin-left: 0; margin-top: 3px; font-size: 0.55em; }
             
-            /* Logic to reorder the sections on mobile */
             .details-section { 
                 display: flex;
                 flex-direction: column;
                 gap: 20px; 
             }
 
-            .info-content h2, .info-content p { order: 1; } /* Header and Text first */
+            .info-content { order: 1; } /* Text first */
             .map-container { order: 2; } /* Map second */
-            .sidebar-box { order: 3; margin-top: 10px; } /* Contact info box last */
+            .sidebar-box { order: 3; margin-top: 10px; } /* Info box LAST */
 
             .services-grid { grid-template-columns: repeat(4, 1fr); gap: 8px; }
             .service-card { height: 110px; }
@@ -189,12 +188,12 @@
         <div class="info-content">
             <h2>Service Area</h2>
             <p>We provide high-end mobile diagnostics and repair throughout Western Washington. Skip the dealership—we come to your home or office.</p>
-            
-            <div class="sidebar-box">
-                <p><strong>Phone:</strong> (253) 861-2955</p>
-                <p><strong>Location:</strong> Mobile Service based in Western Washington</p>
-                <p><strong>Coverage:</strong> Serving Pierce, King, and Thurston Counties.</p>
-            </div>
+        </div>
+
+        <div class="sidebar-box">
+            <p><strong>Phone:</strong> (253) 861-2955</p>
+            <p><strong>Location:</strong> Mobile Service based in Western Washington</p>
+            <p><strong>Coverage:</strong> Serving Pierce, King, and Thurston Counties.</p>
         </div>
 
         <div class="map-container">
