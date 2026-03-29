@@ -32,35 +32,22 @@
         }
 
         .hero h1 { font-size: clamp(1.6rem, 5vw, 2.4rem); margin-bottom: 5px; text-transform: uppercase; }
-        
-        .hero h1 span.small-title { 
-            font-size: 0.6em; 
-            text-transform: none; 
-            vertical-align: middle; 
-            opacity: 0.9;
-            margin-left: 10px;
-            display: inline-block;
-        }
+        .hero h1 span.small-title { font-size: 0.6em; text-transform: none; vertical-align: middle; opacity: 0.9; margin-left: 10px; display: inline-block; }
 
-        .btn-cta { background-color: var(--accent-orange); color: white; padding: 14px 28px; border-radius: 8px; text-decoration: none; font-weight: 800; font-size: 1.1rem; display: inline-block; transition: 0.3s; }
+        .btn-cta { background-color: var(--accent-orange); color: white; padding: 14px 28px; border-radius: 8px; text-decoration: none; font-weight: 800; font-size: 1.1rem; display: inline-block; transition: 0.3s; cursor: pointer; border: none; }
         .btn-cta:hover { transform: scale(1.03); background-color: #ff9d52; }
 
-        /* MOVED CARDS DOWN - Changed margin-top to 20px instead of negative */
-        .section-container { 
-            max-width: 1100px; 
-            margin: 20px auto 60px; 
-            padding: 0 20px; 
-        }
+        .section-container { max-width: 1100px; margin: 30px auto 60px; padding: 0 20px; }
 
         .services-grid { 
             display: grid; 
             grid-template-columns: repeat(4, 1fr); 
-            gap: 20px; 
+            gap: 15px; 
         }
 
         .service-card {
             position: relative;
-            height: 250px;
+            height: 180px; /* Base height */
             border-radius: 12px;
             overflow: hidden;
             display: flex;
@@ -70,36 +57,55 @@
             text-align: center;
             color: white;
             padding: 15px;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
             background-color: var(--primary-blue);
+            cursor: pointer;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
         }
 
-        .service-bg {
+        /* Expanded State */
+        .service-card.active {
+            height: 280px;
+            box-shadow: 0 12px 30px rgba(0,0,0,0.3);
+        }
+
+        .service-bg { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background-size: cover; background-position: center; z-index: 1; }
+        .service-overlay { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(to bottom, rgba(26, 54, 93, 0.5), rgba(26, 54, 93, 0.8)); z-index: 2; }
+
+        .service-content { position: relative; z-index: 3; width: 100%; pointer-events: none; }
+
+        .service-card h3 { margin: 0; font-size: 0.9rem; text-transform: uppercase; line-height: 1.2; font-weight: 800; text-shadow: 0 2px 4px rgba(0,0,0,0.5); }
+
+        /* Hidden Description */
+        .service-desc {
+            max-height: 0;
+            opacity: 0;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            font-size: 0.8rem;
+            margin-top: 0;
+            padding-top: 0;
+        }
+
+        .service-card.active .service-desc {
+            max-height: 150px;
+            opacity: 1;
+            margin-top: 15px;
+            padding-top: 5px;
+            border-top: 1px solid rgba(255,255,255,0.2);
+        }
+
+        /* Plus Icon indicator */
+        .expand-icon {
             position: absolute;
-            top: 0; left: 0; width: 100%; height: 100%;
-            background-size: cover;
-            background-position: center;
-            z-index: 1;
+            top: 10px;
+            right: 10px;
+            z-index: 4;
+            font-size: 0.8rem;
+            opacity: 0.6;
+            transition: transform 0.3s;
         }
-
-        .service-overlay {
-            position: absolute;
-            top: 0; left: 0; width: 100%; height: 100%;
-            background: linear-gradient(to bottom, rgba(26, 54, 93, 0.4), rgba(26, 54, 93, 0.6));
-            z-index: 2;
-        }
-
-        .service-content { position: relative; z-index: 3; width: 100%; }
-        
-        /* Headers inside boxes */
-        .service-card h3 { 
-            margin: 0; 
-            font-size: 1rem; 
-            text-transform: uppercase; 
-            line-height: 1.2; 
-            font-weight: 800;
-            text-shadow: 0 2px 4px rgba(0,0,0,0.5);
-        }
+        .service-card.active .expand-icon { transform: rotate(45-deg); opacity: 1; }
 
         .details-section { padding: 40px 20px; max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: 1.5fr 1fr; gap: 40px; }
         .info-content h2 { color: var(--primary-blue); }
@@ -111,31 +117,16 @@
 
         footer { background: var(--primary-blue); color: white; text-align: center; padding: 50px 20px; }
 
-        /* MOBILE ADJUSTMENTS */
         @media (max-width: 768px) {
-            .hero { min-height: 220px; padding: 15px; }
+            .hero { min-height: 220px; }
             .hero h1 span.small-title { display: block; margin-left: 0; margin-top: 3px; font-size: 0.55em; }
             .details-section { grid-template-columns: 1fr; }
-            
-            .services-grid { 
-                grid-template-columns: repeat(4, 1fr); 
-                gap: 5px; 
-            }
-
-            .service-card {
-                height: 100px; 
-                padding: 5px 2px;
-            }
-
-            .service-card h3 { 
-                font-size: 0.55rem; 
-                letter-spacing: 0;
-            }
-            
-            .section-container {
-                margin-top: 15px; /* Spacing below hero on mobile */
-                padding: 0 5px;
-            }
+            .services-grid { grid-template-columns: repeat(4, 1fr); gap: 8px; }
+            .service-card { height: 110px; padding: 8px 4px; }
+            .service-card.active { height: 220px; }
+            .service-card h3 { font-size: 0.6rem; }
+            .service-desc { font-size: 0.7rem; }
+            .section-container { margin-top: 20px; padding: 0 8px; }
         }
     </style>
 </head>
@@ -149,34 +140,47 @@
 
     <div class="section-container">
         <div class="services-grid">
-            <div class="service-card">
+            
+            <div class="service-card" onclick="toggleCard(this)">
+                <i class="fas fa-plus expand-icon"></i>
                 <div class="service-bg" style="background-image: url('key.png');"></div>
                 <div class="service-overlay"></div>
                 <div class="service-content">
                     <h3>Key Programming</h3>
+                    <div class="service-desc">Lost keys, new spares, or remote programming for BMW E & F series models.</div>
                 </div>
             </div>
-            <div class="service-card">
+
+            <div class="service-card" onclick="toggleCard(this)">
+                <i class="fas fa-plus expand-icon"></i>
                 <div class="service-bg" style="background-image: url('ecu.png');"></div>
                 <div class="service-overlay"></div>
                 <div class="service-content">
                     <h3>ECU & Coding</h3>
+                    <div class="service-desc">Module cloning, coding, software adaptations, and ECU recovery services.</div>
                 </div>
             </div>
-            <div class="service-card">
+
+            <div class="service-card" onclick="toggleCard(this)">
+                <i class="fas fa-plus expand-icon"></i>
                 <div class="service-bg" style="background-image: url('diag.png');"></div>
                 <div class="service-overlay"></div>
                 <div class="service-content">
                     <h3>Advanced Diag</h3>
+                    <div class="service-desc">Dealer-level scanning, fault finding, and electrical troubleshooting.</div>
                 </div>
             </div>
-            <div class="service-card">
+
+            <div class="service-card" onclick="toggleCard(this)">
+                <i class="fas fa-plus expand-icon"></i>
                 <div class="service-bg" style="background-image: url('mech.png');"></div>
                 <div class="service-overlay"></div>
                 <div class="service-content">
                     <h3>Mechanical Repair</h3>
+                    <div class="service-desc">Specialized S85 V10 maintenance, gaskets, cooling, and belt systems.</div>
                 </div>
             </div>
+
         </div>
     </div>
 
@@ -205,6 +209,17 @@
         <a href="tel:2538612955" class="btn-cta">CALL NOW</a>
         <p style="margin-top: 20px; font-size: 0.75rem; opacity: 0.6;">© 2026 Mobile BMW Repair & Diagnostics</p>
     </footer>
+
+    <script>
+        function toggleCard(card) {
+            // Close any other open cards
+            document.querySelectorAll('.service-card').forEach(c => {
+                if (c !== card) c.classList.remove('active');
+            });
+            // Toggle the clicked card
+            card.classList.toggle('active');
+        }
+    </script>
 
 </body>
 </html>
