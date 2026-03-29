@@ -76,7 +76,17 @@
         .service-card.active .expand-icon { transform: rotate(45deg); opacity: 1; }
 
         /* SERVICE AREA SECTION */
-        .details-section { padding: 40px 20px; max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: 1.2fr 1.3fr; gap: 40px; align-items: start; }
+        .details-section { 
+            padding: 40px 20px; 
+            max-width: 1100px; 
+            margin: 0 auto; 
+            display: grid; 
+            grid-template-columns: 1fr 1.2fr; 
+            gap: 40px; 
+            align-items: start; 
+        }
+
+        .info-content { display: flex; flex-direction: column; }
         .info-content h2 { color: var(--primary-blue); margin-top: 0; }
         
         .map-container { 
@@ -84,19 +94,37 @@
             border-radius: 12px; 
             overflow: hidden; 
             box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-            background: #ddd; /* Fallback color */
+            background: #ddd; 
             line-height: 0;
         }
         .map-container img { width: 100%; height: auto; display: block; }
 
-        .sidebar-box { background: white; padding: 25px; border-radius: 12px; box-shadow: 0 5px 15px rgba(0,0,0,0.05); border-top: 5px solid var(--primary-blue); margin-top: 20px; }
+        .sidebar-box { 
+            background: white; 
+            padding: 25px; 
+            border-radius: 12px; 
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05); 
+            border-top: 5px solid var(--primary-blue); 
+            margin-top: 25px;
+        }
 
         footer { background: var(--primary-blue); color: white; text-align: center; padding: 50px 20px; }
 
         @media (max-width: 768px) {
             .hero { min-height: 220px; }
             .hero h1 span.small-title { display: block; margin-left: 0; margin-top: 3px; font-size: 0.55em; }
-            .details-section { grid-template-columns: 1fr; gap: 20px; }
+            
+            /* Logic to reorder the sections on mobile */
+            .details-section { 
+                display: flex;
+                flex-direction: column;
+                gap: 20px; 
+            }
+
+            .info-content h2, .info-content p { order: 1; } /* Header and Text first */
+            .map-container { order: 2; } /* Map second */
+            .sidebar-box { order: 3; margin-top: 10px; } /* Contact info box last */
+
             .services-grid { grid-template-columns: repeat(4, 1fr); gap: 8px; }
             .service-card { height: 110px; }
             .service-card.active { height: 220px; }
