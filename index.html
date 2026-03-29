@@ -34,7 +34,6 @@
         /* Title Styles */
         .hero h1 { font-size: clamp(1.8rem, 5vw, 2.8rem); margin-bottom: 10px; text-transform: uppercase; }
         
-        /* This makes "Mobile Service" smaller and slightly lighter */
         .hero h1 span.small-title { 
             font-size: 0.6em; 
             text-transform: none; 
@@ -49,7 +48,12 @@
 
         .section-container { max-width: 1100px; margin: -50px auto 60px; padding: 0 20px; }
 
-        .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 20px; }
+        /* Main Desktop Grid */
+        .services-grid { 
+            display: grid; 
+            grid-template-columns: repeat(4, 1fr); 
+            gap: 20px; 
+        }
 
         .service-card {
             position: relative;
@@ -83,12 +87,12 @@
             z-index: 2;
         }
 
-        .service-content { position: relative; z-index: 3; }
+        .service-content { position: relative; z-index: 3; width: 100%; }
         .service-card:hover .service-bg { transform: scale(1.1); }
 
         .service-card i { font-size: 2.5rem; margin-bottom: 15px; color: var(--accent-orange); }
-        .service-card h3 { margin: 10px 0; font-size: 1.2rem; text-transform: uppercase; letter-spacing: 1px; }
-        .service-card p { font-size: 0.9rem; opacity: 0.9; margin: 0; }
+        .service-card h3 { margin: 10px 0; font-size: 1.1rem; text-transform: uppercase; letter-spacing: 1px; }
+        .service-card p { font-size: 0.85rem; opacity: 0.9; margin: 0; }
 
         .details-section { padding: 40px 20px; max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: 1.5fr 1fr; gap: 40px; }
         .info-content h2 { color: var(--primary-blue); }
@@ -100,10 +104,41 @@
 
         footer { background: var(--primary-blue); color: white; text-align: center; padding: 60px 20px; }
 
-        @media (max-width: 768px) { 
-            .details-section { grid-template-columns: 1fr; } 
-            .section-container { margin-top: 20px; }
+        /* MOBILE ADJUSTMENTS */
+        @media (max-width: 768px) {
             .hero h1 span.small-title { display: block; margin-left: 0; margin-top: 5px; }
+            .details-section { grid-template-columns: 1fr; }
+            
+            /* Force 4 in a row */
+            .services-grid { 
+                grid-template-columns: repeat(4, 1fr); 
+                gap: 8px; /* Smaller gaps for tight fit */
+            }
+
+            .service-card {
+                height: 140px; /* Shorter for mobile */
+                padding: 10px 5px;
+            }
+
+            .service-card i {
+                font-size: 1.4rem; /* Smaller icons */
+                margin-bottom: 8px;
+            }
+
+            .service-card h3 {
+                font-size: 0.65rem; /* Smaller text headers */
+                margin: 5px 0;
+            }
+
+            /* Hide description on mobile to prevent overcrowding */
+            .service-card p {
+                display: none;
+            }
+            
+            .section-container {
+                margin-top: -30px;
+                padding: 0 10px;
+            }
         }
     </style>
 </head>
@@ -123,8 +158,7 @@
                 <div class="service-overlay"></div>
                 <div class="service-content">
                     <i class="fas fa-key"></i>
-                    <h3>Key Programming</h3>
-                    <p>Lost keys or new spares. Specialized programming for BMW E and F series.</p>
+                    <h3>Key Pro</h3>
                 </div>
             </div>
 
@@ -133,8 +167,7 @@
                 <div class="service-overlay"></div>
                 <div class="service-content">
                     <i class="fas fa-microchip"></i>
-                    <h3>ECU & Coding</h3>
-                    <p>Module cloning, coding, and software adaptations for all modules.</p>
+                    <h3>ECU</h3>
                 </div>
             </div>
 
@@ -143,8 +176,7 @@
                 <div class="service-overlay"></div>
                 <div class="service-content">
                     <i class="fas fa-laptop-code"></i>
-                    <h3>Advanced Diagnostics</h3>
-                    <p>Dealer-level scanning and complex fault troubleshooting.</p>
+                    <h3>Diag</h3>
                 </div>
             </div>
 
@@ -153,8 +185,7 @@
                 <div class="service-overlay"></div>
                 <div class="service-content">
                     <i class="fas fa-gears"></i>
-                    <h3>Mechanical Repair</h3>
-                    <p>Engine repairs, gaskets, and specialized S85 V10 maintenance.</p>
+                    <h3>Mech</h3>
                 </div>
             </div>
 
