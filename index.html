@@ -59,7 +59,7 @@
         }
 
         .hero h1 { 
-            font-size: clamp(2rem, 6vw, 3.5rem); margin: 0; 
+            font-size: clamp(2.2rem, 6vw, 3.5rem); margin: 0; 
             text-transform: uppercase; font-weight: 800; letter-spacing: -1px;
             animation: fadeInUp 0.8s ease;
         }
@@ -107,6 +107,38 @@
         .service-desc { max-height: 0; opacity: 0; overflow: hidden; transition: 0.5s; font-size: 0.9rem; font-weight: 300; z-index: 3; color: #ccd6f6; }
         .service-card.active .service-desc { max-height: 200px; opacity: 1; margin-top: 20px; }
 
+        /* REVIEWS SECTION */
+        .reviews-container {
+            display: flex;
+            gap: 20px;
+            overflow-x: auto;
+            padding: 20px 0 40px;
+            scrollbar-width: none;
+        }
+        .reviews-container::-webkit-scrollbar { display: none; }
+
+        .review-card {
+            min-width: 300px;
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            padding: 30px;
+            border-radius: 24px;
+            backdrop-filter: blur(10px);
+            transition: 0.3s;
+        }
+        .review-card:hover { border-color: var(--accent-orange); transform: translateY(-5px); }
+        
+        .stars { color: #ffcc00; margin-bottom: 15px; font-size: 0.9rem; }
+        .review-text { font-style: italic; font-size: 0.95rem; color: #ccd6f6; margin-bottom: 20px; min-height: 80px; }
+        .reviewer-name { font-weight: 800; font-size: 1rem; color: #fff; display: flex; align-items: center; gap: 10px; }
+        
+        .google-attribution {
+            text-align: center;
+            margin-top: 20px;
+            opacity: 0.6;
+            font-size: 0.8rem;
+        }
+
         /* GLASSMORPHISM FORM */
         .form-section { 
             background: rgba(255, 255, 255, 0.02); 
@@ -121,10 +153,11 @@
             background: rgba(255,255,255,0.05); 
             border: 1px solid var(--glass-border); 
             color: white; padding: 18px; border-radius: 12px; margin-bottom: 20px;
+            font-family: inherit;
         }
-        .contact-form input:focus { border-color: var(--accent-orange); outline: none; background: rgba(255,255,255,0.08); }
+        .contact-form input:focus, .contact-form textarea:focus { border-color: var(--accent-orange); outline: none; background: rgba(255,255,255,0.08); }
 
-        /* SERVICE AREA MAP - PREMIUM CARD */
+        /* SERVICE AREA MAP */
         .details-section { 
             background: #0a192f; padding: 80px 40px; border-radius: 40px; 
             display: grid; grid-template-columns: 1fr 1.2fr; gap: 60px; align-items: center;
@@ -139,7 +172,8 @@
             border: 1px solid var(--glass-border); 
             display: flex; justify-content: space-around; flex-wrap: wrap; gap: 30px; 
         }
-        .info-tile { display: flex; align-items: center; gap: 15px; }
+        .info-tile { display: flex; align-items: center; gap: 15px; text-decoration: none; color: inherit; transition: 0.3s; }
+        .info-tile:hover { transform: translateY(-3px); }
         .info-tile i { color: var(--accent-orange); font-size: 1.5rem; }
 
         footer { background: #020c1b; color: white; text-align: center; padding: 80px 20px; border-top: 1px solid var(--glass-border); }
@@ -154,13 +188,14 @@
             .details-section { grid-template-columns: 1fr; padding: 40px 20px; }
             .form-section { padding: 30px 20px; margin: 0 20px 100px; }
             .bottom-info-box { flex-direction: column; text-align: left; }
+            .review-card { min-width: 260px; padding: 20px; }
         }
     </style>
 </head>
 <body>
 
     <header class="hero" id="top">
-        <div class="mobile-tag"> Mobile Service</div>
+        <div class="mobile-tag">Mobile Service</div>
         <h1>BMW Diagnostics <br><span style="color:var(--accent-orange)">&</span> Repair</h1>
         <p><i class="fas fa-location-dot"></i> Western Washington's Premier Mobile Specialist</p>
         <a href="tel:2538612955" class="btn-cta">CALL OR TEXT (253) 861-2955</a>
@@ -215,8 +250,47 @@
                 </ul>
             </div>
             <div class="map-container">
-                <img src="map.png" alt="Service Area Map" style="width: 100%; display: block;">
+                <img src="map.png" alt="BMW Mobile Repair Service Area Map Western Washington" style="width: 100%; display: block;">
             </div>
+        </div>
+    </section>
+
+    <section class="section-container">
+        <div class="section-header">
+            <h2>Client Feedback</h2>
+            <div class="underline"></div>
+        </div>
+
+        <div class="reviews-container">
+            <div class="review-card">
+                <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                <p class="review-text">"Damian is incredibly knowledgeable and thorough with diagnosis. Really quick turn around time - excellent service, I highly recommend!"</p>
+                <div class="reviewer-name">Riley R. <span style="font-size: 0.7rem; color: var(--accent-orange); font-weight: 400;">Verified Customer</span></div>
+            </div>
+
+            <div class="review-card">
+                <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                <p class="review-text">"We were so pleased with the work done on our '02 BMW, which now runs like a new car! He gave us beautifully presented complete diagnostics."</p>
+                <div class="reviewer-name">Theresa O. <span style="font-size: 0.7rem; color: var(--accent-orange); font-weight: 400;">Verified Customer</span></div>
+            </div>
+
+            <div class="review-card">
+                <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                <p class="review-text">"Appreciated the expertise, thorough diagnostic and detailed dedication to my car's needs. It's always a relief when you can trust the folks who make it work!"</p>
+                <div class="reviewer-name">K. <span style="font-size: 0.7rem; color: var(--accent-orange); font-weight: 400;">BMW 335i Owner</span></div>
+            </div>
+
+            <div class="review-card">
+                <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                <p class="review-text">"Excellent and professional service. Superb in communicating back and forth. His attention to detail was top notch."</p>
+                <div class="reviewer-name">Tomm E. <span style="font-size: 0.7rem; color: var(--accent-orange); font-weight: 400;">Verified Customer</span></div>
+            </div>
+        </div>
+
+        <div class="google-attribution">
+            <i class="fab fa-google"></i> Based on 48+ 5-Star Google Reviews
+            <br>
+            <a href="https://share.google/P0tXEQZ0LyMKTYU0F" target="_blank" style="color: var(--accent-orange); text-decoration: none; font-weight: 600; margin-top: 10px; display: inline-block;">View all reviews on Google →</a>
         </div>
     </section>
 
@@ -239,10 +313,10 @@
 
     <div class="section-container">
         <div class="bottom-info-box">
-            <div class="info-tile">
+            <a href="tel:2538612955" class="info-tile">
                 <i class="fas fa-phone"></i>
                 <div><strong>Direct Line</strong><br>(253) 861-2955</div>
-            </div>
+            </a>
             <div class="info-tile">
                 <i class="fas fa-car"></i>
                 <div><strong>Mobile Base</strong><br>Western Washington</div>
