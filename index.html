@@ -10,11 +10,17 @@
     
     <style>
         :root {
-            --primary-blue: #0a192f;
+            /* Theme Swapped for Light Mode */
+            --primary-blue: #ffffff; /* Page background is now white */
             --accent-orange: #ff8c31;
             --bmw-blue: #0066ad;
-            --glass-bg: rgba(255, 255, 255, 0.03);
-            --glass-border: rgba(255, 255, 255, 0.1);
+            --glass-bg: rgba(0, 0, 0, 0.03); /* Glass effects are now dark/subtle */
+            --glass-border: rgba(0, 0, 0, 0.1);
+            
+            /* Text color definitions */
+            --text-main: #333333; /* Dark text */
+            --text-muted: #666666;
+            --card-text: #ffffff; /* Service cards keep light text on dark background */
         }
 
         /* Smooth Scrolling */
@@ -23,9 +29,9 @@
         body { 
             font-family: 'Inter', sans-serif; 
             margin: 0; padding: 0; 
-            color: #e6e6e6; 
+            color: var(--text-main); 
             line-height: 1.6; 
-            background: #020c1b; /* Deep Dark Blue */
+            background: var(--primary-blue); /* Light background */
             overflow-x: hidden;
         }
 
@@ -34,13 +40,15 @@
             content: "";
             position: fixed;
             top: 0; left: 0; width: 100%; height: 100%;
-            background: radial-gradient(circle at 50% 50%, #112240 0%, #020c1b 100%);
+            /* Subtle light gradient */
+            background: radial-gradient(circle at 50% 50%, #f0f4f8 0%, #ffffff 100%);
             z-index: -1;
         }
 
         /* HERO SECTION */
         .hero {
-            background: linear-gradient(rgba(2, 12, 27, 0.7), rgba(2, 12, 27, 0.8)), 
+            /* Adjusted overlays for light theme */
+            background: linear-gradient(rgba(255, 255, 255, 0.7), rgba(255, 255, 255, 0.8)), 
                         url('background.png') center/cover;
             min-height: 450px;
             display: flex;
@@ -61,10 +69,11 @@
         .hero h1 { 
             font-size: clamp(2rem, 6vw, 3.5rem); margin: 0; 
             text-transform: uppercase; font-weight: 800; letter-spacing: -1px;
+            color: #1a1a1a; /* Dark title */
             animation: fadeInUp 0.8s ease;
         }
 
-        .hero p { opacity: 0.7; font-weight: 300; letter-spacing: 1px; margin-top: 10px; }
+        .hero p { opacity: 0.8; font-weight: 300; letter-spacing: 1px; margin-top: 10px; color: var(--text-muted); }
 
         .btn-cta { 
             background: linear-gradient(45deg, var(--accent-orange), #ffa55e); 
@@ -77,72 +86,79 @@
 
         /* SECTION HEADERS */
         .section-header { text-align: center; margin: 100px auto 50px; }
-        .section-header h2 { font-size: 2.5rem; font-weight: 800; text-transform: uppercase; margin: 0; color: #fff; }
+        .section-header h2 { font-size: 2.5rem; font-weight: 800; text-transform: uppercase; margin: 0; color: #1a1a1a; }
         .section-header .underline { width: 40px; height: 3px; background: var(--accent-orange); margin: 15px auto; border-radius: 10px; }
 
-        /* SERVICES GRID */
+        /* SERVICES GRID - Kept dark with images */
         .section-container { max-width: 1200px; margin: 0 auto 100px; padding: 0 20px; }
         .services-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; perspective: 1000px; }
         
         .service-card {
             position: relative; height: 220px; border-radius: 24px; overflow: hidden; 
             display: flex; flex-direction: column; align-items: center; justify-content: center; 
-            text-align: center; color: white; padding: 25px;
-            background: #112240; cursor: pointer; border: 1px solid var(--glass-border);
+            text-align: center; color: var(--card-text); padding: 25px;
+            background: #112240; /* Kept dark blue background for the images */
+            cursor: pointer; border: 1px solid rgba(255,255,255,0.1);
             transition: all 0.6s cubic-bezier(0.23, 1, 0.32, 1);
         }
 
         .service-card.active { 
             height: 380px; transform: scale(1.1) rotateX(2deg); z-index: 50; 
-            box-shadow: 0 40px 80px rgba(0,0,0,0.6); border-color: var(--accent-orange);
+            box-shadow: 0 40px 80px rgba(0,0,0,0.3); border-color: var(--accent-orange);
         }
 
         .services-grid:has(.service-card.active) .service-card:not(.active) { filter: blur(2px) grayscale(0.8); opacity: 0.3; transform: scale(0.9); }
 
         .service-bg { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background-size: cover; background-position: center; z-index: 1; transition: 1s; opacity: 0.4; }
         .service-card.active .service-bg { opacity: 0.7; transform: scale(1.1); }
-        .service-overlay { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(to bottom, transparent, #020c1b); z-index: 2; }
+        /* Overlay adjusted to match the card background */
+        .service-overlay { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(to bottom, transparent, #112240); z-index: 2; }
         
-        .service-card h3 { margin: 0; font-size: 1rem; text-transform: uppercase; font-weight: 800; z-index: 3; }
+        .service-card h3 { margin: 0; font-size: 1rem; text-transform: uppercase; font-weight: 800; z-index: 3; color: var(--card-text); }
         .service-desc { max-height: 0; opacity: 0; overflow: hidden; transition: 0.5s; font-size: 0.9rem; font-weight: 300; z-index: 3; color: #ccd6f6; }
         .service-card.active .service-desc { max-height: 200px; opacity: 1; margin-top: 20px; }
 
         /* GLASSMORPHISM FORM */
         .form-section { 
-            background: rgba(255, 255, 255, 0.02); 
+            background: rgba(0, 0, 0, 0.02); /* Swapped to light glass */
             backdrop-filter: blur(15px); 
             padding: 60px; border-radius: 30px; 
             max-width: 800px; margin: 0 auto 100px; 
             border: 1px solid var(--glass-border); 
-            box-shadow: 0 25px 50px -12px rgba(0,0,0,0.5);
+            box-shadow: 0 25px 50px -12px rgba(0,0,0,0.1);
         }
-        .form-section h2 { margin-bottom: 40px; font-weight: 800; text-align: center; }
+        .form-section h2 { margin-bottom: 40px; font-weight: 800; text-align: center; color: #1a1a1a; }
         .contact-form input, .contact-form textarea { 
-            background: rgba(255,255,255,0.05); 
+            background: rgba(0,0,0,0.05); /* Light inputs */
             border: 1px solid var(--glass-border); 
-            color: white; padding: 18px; border-radius: 12px; margin-bottom: 20px;
+            color: #333; padding: 18px; border-radius: 12px; margin-bottom: 20px;
         }
-        .contact-form input:focus { border-color: var(--accent-orange); outline: none; background: rgba(255,255,255,0.08); }
+        .contact-form input::placeholder, .contact-form textarea::placeholder { color: #888; }
+        .contact-form input:focus { border-color: var(--accent-orange); outline: none; background: rgba(0,0,0,0.08); }
 
         /* SERVICE AREA MAP - PREMIUM CARD */
         .details-section { 
-            background: #0a192f; padding: 80px 40px; border-radius: 40px; 
+            background: #f8f9fa; padding: 80px 40px; border-radius: 40px; 
             display: grid; grid-template-columns: 1fr 1.2fr; gap: 60px; align-items: center;
             margin-bottom: 100px; border: 1px solid var(--glass-border);
         }
-        .map-container { border-radius: 24px; overflow: hidden; border: 1px solid var(--glass-border); filter: saturate(0.8); }
+        .info-content h2 { color: #1a1a1a; }
+        .map-container { border-radius: 24px; overflow: hidden; border: 1px solid var(--glass-border); filter: saturate(1); }
 
         /* BOTTOM CONTACT TILES */
         .bottom-info-box { 
-            background: rgba(255,255,255,0.02); 
+            background: rgba(0, 0, 0, 0.02); /* Light tiles */
             padding: 40px; border-radius: 24px; 
             border: 1px solid var(--glass-border); 
             display: flex; justify-content: space-around; flex-wrap: wrap; gap: 30px; 
+            box-shadow: 0 10px 20px rgba(0,0,0,0.05);
         }
-        .info-tile { display: flex; align-items: center; gap: 15px; }
+        .info-tile { display: flex; align-items: center; gap: 15px; color: var(--text-main); }
+        .info-tile strong { color: #1a1a1a; }
         .info-tile i { color: var(--accent-orange); font-size: 1.5rem; }
 
-        footer { background: #020c1b; color: white; text-align: center; padding: 80px 20px; border-top: 1px solid var(--glass-border); }
+        footer { background: #f8f9fa; color: var(--text-main); text-align: center; padding: 80px 20px; border-top: 1px solid var(--glass-border); }
+        footer h2 { color: #1a1a1a; }
 
         /* ANIMATIONS */
         @keyframes fadeInUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
@@ -256,7 +272,7 @@
 
     <footer>
         <h2 style="font-weight: 800; letter-spacing: -1px;">BMW MOBILE REPAIR</h2>
-        <p style="opacity: 0.5; font-size: 0.8rem; margin-top: 20px;">© 2026 Mobile BMW Repair & Diagnostics. All Rights Reserved.</p>
+        <p style="opacity: 0.8; font-size: 0.8rem; margin-top: 20px;">© 2026 Mobile BMW Repair & Diagnostics. All Rights Reserved.</p>
     </footer>
 
     <script>
